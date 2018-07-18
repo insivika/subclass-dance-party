@@ -1,38 +1,27 @@
-// Creates and returns a new dancer object that can step
 var makeDancer = function(top, left, timeBetweenSteps) {
 
-  // var dancer = {};
-
-  this.left = left;
-
-  this.timeBetweenSteps = timeBetweenSteps;
-    
-  // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
-
-
-  //   // the basic dancer doesn't do anything interesting at all on each step,
-  //   // it just schedules the next step
- 
   this.step();
-  // console.log(this.timeBetweenSteps)
-
-  // dancer.setPosition = function(top, left) {
-  //   // Use css top and left properties to position our <span> tag
-  //   // where it belongs on the page. See http://api.jquery.com/css/
-
- // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
-  // this one sets the position to some random default point within the body
   this.setPosition(top, left);
+  this.leftVar = false;
+  this.move();
 
-  // return dancer;
 };
 
 
 makeDancer.prototype.step = function() {
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
+
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
+
+};
+
+makeDancer.prototype.slowStep = function() {
+
+  setTimeout(this.step.bind(this), 2000);
+
+  if(this.leftVar === true){
+    return;
+}
 
 };
 
@@ -46,3 +35,27 @@ makeDancer.prototype.setPosition = function(top, left) {
   };
   this.$node.css(styleSettings);
 };
+
+makeDancer.prototype.move = function(){
+  var x = 5 // seconds
+
+  var top = $("body").height() * Math.random();
+  var left = $("body").width() * Math.random();
+
+  if(this.leftVar === true){
+      return;
+  }
+
+  this.$node.css({"top":top, "left":left});
+
+  setTimeout(this.move.bind(this), x * 1000);
+
+};
+
+
+
+makeDancer.prototype.setLeft = function(){
+  this.leftVar = true;
+  $('.robot').css('left', '0');
+
+}
