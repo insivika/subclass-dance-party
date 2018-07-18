@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url(dancefloor-hero.jpeg);
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -12,16 +13,36 @@ body, a:link, a:visited, a:active{
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  text-decoration: none;
+  padding: 10px;
+  background-color: black;
+  border: 1px solid goldenrod;
 }
 .topbar{
-  height:32px;
+  height: 42px;
   background-color: #555;
 }
 .title{
-  background-color: #777;
+  background-color: gold;
+  color: black;
 }
-.dancer{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
-}
+  .dancer{
+    width: 55px;
+    height: 120px;
+    background-image: url(blackDancer.jpg);
+    background-size: cover;
+    background-color: transparent;
+    position:absolute;
+    transition: all 0.5s ease;
+  }
+
+  .bouncy{
+    width: 55px;
+    height: 120px;
+    background-image: url(blackDancer.jpg);
+    background-size: cover;
+    background-color: transparent;
+    position:absolute;
+    top: 10px !important;
+    transition: all 0.5s ease;
+  }
