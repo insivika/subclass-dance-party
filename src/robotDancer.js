@@ -22,14 +22,3 @@ makeRobotDancer.prototype.step = function() {
 // timoutfunction should change the top and left css property to random values
 
 };
-
-makeRobotDancer.prototype.move = function(){
-  var x = 5 // seconds
-
-  var top = $("body").height() * Math.random();
-  var left = $("body").width() * Math.random();
-
-  this.$node.css({"top":top, "left":left});
-
-  setTimeout(this.move.bind(this), x * 1000)
-};

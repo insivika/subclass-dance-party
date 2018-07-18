@@ -1,67 +1,28 @@
-// Creates and returns a new dancer object that can step
-
-var setLeft = false;
-
 var makeDancer = function(top, left, timeBetweenSteps) {
 
-  // var dancer = {};
-
-  // use jQuery to create an HTML <span> tag
   this.$node = $('<span class="dancer"></span>');
-
-  // dancer.step = function() {
-  //   // the basic dancer doesn't do anything interesting at all on each step,
-  //   // it just schedules the next step
-  //   setTimeout(dancer.step, timeBetweenSteps);
-  // };
-
-  // this.timeBetweenSteps = timeBetweenSteps;
   this.step();
-  // console.log(this.timeBetweenSteps)
-
-  // dancer.setPosition = function(top, left) {
-  //   // Use css top and left properties to position our <span> tag
-  //   // where it belongs on the page. See http://api.jquery.com/css/
-  //   //
-  //   var styleSettings = {
-  //     top: top,
-  //     left: left
-  //   };
-  //   dancer.$node.css(styleSettings);
-  // };
-
-
-  // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
-  // this one sets the position to some random default point within the body
   this.setPosition(top, left);
+  this.leftVar = false;
+  this.move();
 
-
-  // if setLeft is set to false call this.move() else call this.setLeft()
-  this.setLeft;
-
-  if(this.setLeft = false) {
-    this.move();
-  }
-
-
-  // return dancer;
 };
 
 
 makeDancer.prototype.step = function() {
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
+
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
-  // console.log(this.timeBetweenSteps)
-  // console.log(this);
+
 };
 
 makeDancer.prototype.slowStep = function() {
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
+
   setTimeout(this.step.bind(this), 2000);
-  // console.log(this.timeBetweenSteps)
-  // console.log(this);
+
+  if(this.leftVar === true){
+    return;
+}
+
 };
 
 makeDancer.prototype.setPosition = function(top, left) {
@@ -77,20 +38,24 @@ makeDancer.prototype.setPosition = function(top, left) {
 
 makeDancer.prototype.move = function(){
   var x = 5 // seconds
-  // when .lineButton is pressed
-    // set left to 0
+
   var top = $("body").height() * Math.random();
   var left = $("body").width() * Math.random();
+
+  if(this.leftVar === true){
+      return;
+  }
 
   this.$node.css({"top":top, "left":left});
 
   setTimeout(this.move.bind(this), x * 1000);
+
 };
 
 
 
 makeDancer.prototype.setLeft = function(){
-  this.setLeft = true;
+  this.leftVar = true;
   $('.robot').css('left', '0');
 
 }
