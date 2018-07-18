@@ -1,4 +1,7 @@
 // Creates and returns a new dancer object that can step
+
+var setLeft = false;
+
 var makeDancer = function(top, left, timeBetweenSteps) {
 
   // var dancer = {};
@@ -27,9 +30,19 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   //   dancer.$node.css(styleSettings);
   // };
 
+
   // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
   // this one sets the position to some random default point within the body
   this.setPosition(top, left);
+
+
+  // if setLeft is set to false call this.move() else call this.setLeft()
+  this.setLeft;
+
+  if(this.setLeft = false) {
+    this.move();
+  }
+
 
   // return dancer;
 };
@@ -61,3 +74,23 @@ makeDancer.prototype.setPosition = function(top, left) {
   };
   this.$node.css(styleSettings);
 };
+
+makeDancer.prototype.move = function(){
+  var x = 5 // seconds
+  // when .lineButton is pressed
+    // set left to 0
+  var top = $("body").height() * Math.random();
+  var left = $("body").width() * Math.random();
+
+  this.$node.css({"top":top, "left":left});
+
+  setTimeout(this.move.bind(this), x * 1000);
+};
+
+
+
+makeDancer.prototype.setLeft = function(){
+  this.setLeft = true;
+  $('.robot').css('left', '0');
+
+}

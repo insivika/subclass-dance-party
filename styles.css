@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url(assets/dancefloor-hero.jpeg);
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -12,6 +13,14 @@ body, a:link, a:visited, a:active{
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  text-decoration: none;
+}
+
+.lineButton,
+.moveAgainButton{
+  padding: 5px 12px;
+  float: left;
+  text-decoration: none;
 }
 .topbar{
   height:32px;
@@ -21,15 +30,56 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  width: 55px;
+  height: 120px;
+  background-image: url(assets/blackDancer.jpg);
+  background-size: cover;
+  background-color: transparent;
   position:absolute;
+  transition: all 0.5s ease;
 }
 
-.bouncy{
-  border:10px solid green;
-  border-radius:10px;
-  position: absolute;
-  display: inline-block;
-  top: 100px !important;
+
+
+/* bouncy */
+
+.bouncy1{
+  width: 55px;
+  height: 120px;
+  background-image: url(assets/blackDancer.jpg);
+  background-size: cover;
+  background-color: transparent;
+  position:absolute;
+  transition: all 0.5s ease;
 }
+
+.bouncy2{
+  width: 55px;
+  height: 120px;
+  background-image: url(assets/blackDancer.jpg);
+  background-size: cover;
+  background-color: transparent;
+  position:absolute;
+  top: 10px !important;
+  transition: all 0.5s ease;
+}
+
+
+
+/* robotDancer */
+
+.robot{
+  width: 120px;
+  height: 120px;
+  background-image: url(assets/kisspng-disco-robot-dancer-cartoon-happy-robot-5a955811cff7b6.5943438715197368498518.png);
+  position: absolute;
+  transform: rotate(-20deg);
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
