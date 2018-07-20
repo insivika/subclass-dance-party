@@ -1,61 +1,80 @@
+
+
 var makeDancer = function(top, left, timeBetweenSteps) {
 
-  this.$node = $('<span class="dancer"></span>');
-  this.step();
-  this.setPosition(top, left);
-  this.leftVar = false;
-  this.move();
+  this.$node = $('<div></div>');
 
+  this.step();
+
+  // this.top = top;
+
+  // this.left = left;
+
+  this.setPosition(top, left);
+
+  this.setLeft = false;
+
+  // this.startMoving()
+
+  // this.move();
 };
 
+makeDancer.prototype.startMoving = function(){
+
+  this.move();
+
+}
+
+makeDancer.prototype.setLeft = function(){
+
+  this.alignLeft = true;
+
+  $('.robot').css('left', '0');
+
+
+
+}
 
 makeDancer.prototype.step = function() {
 
-  setTimeout(this.step.bind(this), this.timeBetweenSteps);
+    setTimeout(this.step.bind(this), this.timeBetweenSteps);
 
 };
 
 makeDancer.prototype.slowStep = function() {
 
-  setTimeout(this.step.bind(this), 2000);
-
-  if(this.leftVar === true){
-    return;
-}
+    setTimeout(this.step.bind(this), 2000);
 
 };
 
 makeDancer.prototype.setPosition = function(top, left) {
-  // Use css top and left properties to position our <span> tag
-  // where it belongs on the page. See http://api.jquery.com/css/
 
   var styleSettings = {
+
     top: top,
+
     left: left
+
   };
+
   this.$node.css(styleSettings);
+
 };
 
-makeDancer.prototype.move = function(){
-  var x = 5 // seconds
+makeDancer.prototype.move = function(top , left, time){
 
-  var top = $("body").height() * Math.random();
-  var left = $("body").width() * Math.random();
+  if(this.setLeft === false){
 
-  if(this.leftVar === true){
-      return;
+    this.setPosition(top, left)
+
+    setTimeout(this.move.bind(this, $("body").height() * Math.random(),
+
+     $("body").width() * Math.random()), 2000);
   }
 
-  this.$node.css({"top":top, "left":left});
-
-  setTimeout(this.move.bind(this), x * 1000);
-
-};
-
-
-
-makeDancer.prototype.setLeft = function(){
-  this.leftVar = true;
-  $('.robot').css('left', '0');
-
 }
+
+
+
+
+
